@@ -17,7 +17,7 @@
 
 # noinspection PyPep8Naming
 def classFactory(iface):  # pylint: disable=invalid-name
-    """Load MapUnitsPerPixel class from file ZoomLevel.
+    """Load MapUnitsPerPixel class from file map_units_per_pixel.py.
 
     :param iface: A QGIS interface instance.
     :type iface: QgsInterface
