@@ -16,7 +16,7 @@ about=This plugin displays the pixel size in map units per pixel of the current 
 
 hasProcessingProvider=no
 tags=zoom, scale, map units, resolution
-homepage=https://www.gds-team.de
+homepage=https://github.com/andreassteffens/qgis-map-units-per-pixel
 experimental=False
 deprecated=False
 server=False
