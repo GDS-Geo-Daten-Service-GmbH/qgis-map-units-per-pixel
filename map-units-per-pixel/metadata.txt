@@ -7,8 +7,8 @@ description=Displays the current pixel size of the map in the status bar.
 version=0.1.0
 author=Andreas Steffens
 email=a.steffens@gds-team.de
-tracker=https://github.com/andreassteffens/map-units-per-pixel
-repository=https://github.com/andreassteffens/map-units-per-pixel
+tracker=https://github.com/andreassteffens/qgis-map-units-per-pixel/issues
+repository=https://github.com/andreassteffens/qgis-map-units-per-pixel
 about=This plugin displays the pixel size in map units per pixel of the current map in the status bar.
 
 
