@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="map-units-per-pixel">
+    <file>resources/bar_icon.png</file>
+  </qresource>
+</RCC>

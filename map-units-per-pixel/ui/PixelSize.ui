@@ -38,7 +38,10 @@
    <item row="0" column="0">
     <widget class="QLabel" name="lblPixelSize">
      <property name="text">
-      <string>Pixel Size</string>
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="../resources.qrc">:/map-units-per-pixel/resources/bar_icon.png</pixmap>
      </property>
     </widget>
    </item>
@@ -60,6 +63,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

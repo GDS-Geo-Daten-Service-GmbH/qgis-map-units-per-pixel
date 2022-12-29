@@ -21,6 +21,8 @@ from qgis.PyQt import uic
 from qgis.gui import *
 from qgis.core import *
 
+from .resources import *
+
 class MapUnitsPerPixel(QWidget):
 
     def __init__(self, iface):
@@ -29,6 +31,8 @@ class MapUnitsPerPixel(QWidget):
         # Save reference to the QGIS interface
         self.iface = iface
 
+
+    def initGui(self):
         strUiPath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ui\\PixelSize.ui")
 
         uic.loadUi(strUiPath, self)
@@ -39,14 +43,8 @@ class MapUnitsPerPixel(QWidget):
         self.iface.mapCanvas().scaleChanged.connect(self.onMapCanvasScaleChanged)
 
 
-    def initGui(self):
-        """This plugin makes no menu or toolbar changes."""
-        pass
-
-
     def unload(self):
-        """This plugin makes no menu or toolbar changes."""
-        pass
+        self.iface.mainWindow().statusBar().removeWidget(self)
 
 
     def onPixelSizeEditChanged(self):
