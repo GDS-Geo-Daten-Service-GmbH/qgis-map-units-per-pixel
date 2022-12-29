@@ -5,10 +5,14 @@ MapUnitsPerPixel
  Displays the current pixel size of the map in the status bar.
                               -------------------
         begin                : 2022-12-26
-        copyright            : (C) 2022 by Andreas Steffens
+        copyright            : (C) 2022 by Andreas Steffens (GDS Geo Daten Service GmbH)
         email                : a.steffens@gds-team.de
  /***************************************************************************
 """
+
+__author__ = 'Andreas Steffens'
+__date__ = '26/12/2022'
+__copyright__ = 'Copyright 2022, Andreas Steffens (GDS Geo Daten Service GmbH)'
 
 import os
 import locale
