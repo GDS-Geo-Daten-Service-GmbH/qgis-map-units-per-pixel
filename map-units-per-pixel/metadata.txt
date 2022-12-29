@@ -4,7 +4,7 @@
 name=Map Units per Pixel
 qgisMinimumVersion=3.0
 description=Displays the current pixel size of the map in the status bar.
-version=0.1.0
+version=0.2.0
 author=Andreas Steffens
 email=a.steffens@gds-team.de
 tracker=https://github.com/andreassteffens/qgis-map-units-per-pixel/issues
@@ -16,7 +16,7 @@ about=This plugin displays the pixel size in map units per pixel of the current 
 
 hasProcessingProvider=no
 tags=zoom, scale, map units, resolution
-homepage=https://www.gds-team.de
+homepage=https://github.com/andreassteffens/qgis-map-units-per-pixel
 experimental=False
 deprecated=False
 server=False
@@ -26,6 +26,10 @@ icon=icon.png
 category=Plugins
 
 changelog=
+   [2022-12-29] 0.2.0
+   ------------------
+   [feat] turned display label into input field for changing map scale based on pixel size entered by user
+
    [2022-12-20] 0.1.0
    ------------------
    Initial release

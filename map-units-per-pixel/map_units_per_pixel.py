@@ -9,32 +9,34 @@ MapUnitsPerPixel
         email                : a.steffens@gds-team.de
  /***************************************************************************
 """
-import os
-from enum import Enum
-from qgis.PyQt.QtCore import Qt
-from qgis.PyQt.QtWidgets import (
-    QLabel,
-    QFrame,
-    QWidget
-)
 
+import os
+import locale
+import re
+from enum import Enum
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtWidgets import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt import uic
 from qgis.gui import *
 from qgis.core import *
 
-class MapUnitsPerPixel:
+class MapUnitsPerPixel(QWidget):
 
     def __init__(self, iface):
+        super().__init__()
+    
         # Save reference to the QGIS interface
         self.iface = iface
 
-        self.lblPixelSize = QLabel()
-        self.lblPixelSize.setFrameStyle( QFrame.StyledPanel )
-        self.lblPixelSize.setAlignment( Qt.AlignCenter )
-        self.lblPixelSize.setMinimumWidth( 100 )
-        self.iface.mainWindow().statusBar().addPermanentWidget( self.lblPixelSize )
+        strUiPath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ui\\PixelSize.ui")
 
-        # Display zoom level whenever the map scale changes
-        self.iface.mapCanvas().scaleChanged.connect(self.updateResolution)
+        uic.loadUi(strUiPath, self)
+
+        self.iface.mainWindow().statusBar().addPermanentWidget(self)
+
+        self.lePixelSize.returnPressed.connect(self.onPixelSizeEditChanged)
+        self.iface.mapCanvas().scaleChanged.connect(self.onMapCanvasScaleChanged)
 
 
     def initGui(self):
@@ -47,7 +49,25 @@ class MapUnitsPerPixel:
         pass
 
 
-    def updateResolution(self):
+    def onPixelSizeEditChanged(self):
+        listMatches = []
+        strSeparator = locale.localeconv()["decimal_point"]
+        
+        if strSeparator == ".":
+            listMatches = re.findall("\d+\\" + strSeparator + "\d+", self.lePixelSize.text())
+        else:
+            listMatches = re.findall("\d+" + strSeparator + "\d+", self.lePixelSize.text())
+        
+        if not listMatches:
+            listMatches = re.findall("\d+", self.lePixelSize.text())
+        
+        if listMatches:
+            dScaleFactor = float(listMatches[0]) / self.iface.mapCanvas().mapUnitsPerPixel()
+            dNewScale = self.iface.mapCanvas().scale() * dScaleFactor
+            self.iface.mapCanvas().zoomScale(dNewScale)
+
+
+    def onMapCanvasScaleChanged(self):
         """Display the current pixel size in the status bar"""
 
-        self.lblPixelSize.setText('{:.2f}'.format(self.iface.mapCanvas().mapUnitsPerPixel()) + ' ' + QgsUnitTypes.encodeUnit( self.iface.mapCanvas().mapUnits() ) + '/px')
+        self.lePixelSize.setText('{:.3f}'.format(self.iface.mapCanvas().mapUnitsPerPixel()) + ' ' + QgsUnitTypes.encodeUnit( self.iface.mapCanvas().mapUnits() ) + '/px')
