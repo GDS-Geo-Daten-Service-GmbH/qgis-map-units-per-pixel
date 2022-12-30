@@ -56,12 +56,12 @@ class MapUnitsPerPixel(QWidget):
         strSeparator = locale.localeconv()["decimal_point"]
         
         if strSeparator == ".":
-            listMatches = re.findall("\d+\\" + strSeparator + "\d+", self.lePixelSize.text())
+            listMatches = re.findall("\\d+\\" + strSeparator + "\\d+", self.lePixelSize.text())
         else:
-            listMatches = re.findall("\d+" + strSeparator + "\d+", self.lePixelSize.text())
+            listMatches = re.findall("\\d+" + strSeparator + "\\d+", self.lePixelSize.text())
         
         if not listMatches:
-            listMatches = re.findall("\d+", self.lePixelSize.text())
+            listMatches = re.findall("\\d+", self.lePixelSize.text())
         
         if listMatches:
             dScaleFactor = float(listMatches[0]) / self.iface.mapCanvas().mapUnitsPerPixel()
