@@ -37,7 +37,7 @@ class MapUnitsPerPixel(QWidget):
 
 
     def initGui(self):
-        strUiPath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ui\\PixelSize.ui")
+        strUiPath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ui", "PixelSize.ui")
 
         uic.loadUi(strUiPath, self)
 
