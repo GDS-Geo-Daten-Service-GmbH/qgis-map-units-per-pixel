@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="toolTip">
+   <string>Map Units per Pixel</string>
+  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="sizeConstraint">
     <enum>QLayout::SetDefaultConstraint</enum>
